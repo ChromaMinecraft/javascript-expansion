@@ -22,9 +22,11 @@ package com.extendedclip.papi.expansion.javascript;
 
 import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.PlaceholderAPIPlugin;
+import me.clip.placeholderapi.util.TimeFormat;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.Statistic;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -117,6 +119,7 @@ public class JavascriptPlaceholder {
             if (player != null && player.isOnline()) {
                 engine.put("BukkitPlayer", player.getPlayer());
                 engine.put("Player", player.getPlayer());
+                engine.put("PlayerPlayTime", player.getStatistic(Statistic.PLAY_ONE_MINUTE) / 20);
             }
 
             engine.put("OfflinePlayer", player);
